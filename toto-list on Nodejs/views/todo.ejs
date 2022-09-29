@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Todo</title>
+</head>
+
+<body>
+    <div id="todo-container">
+        <h2>Todo list</h2>
+        <form action="/add/new"  method="post">
+            <span>
+                <input type="text" name="name" placeholder="Add new one"  />
+                <button type="submit">Add New</button>
+            </span>
+        </form>
+        <% datas.forEach(todo =>{%>
+            <div id="list">
+                <%if(todo.status){%>
+                    <p id="complete"><%= todo.name %></p>
+                <%}else{%>
+                    <p><%= todo.name %></p>
+                    <a id="complete-button" href="/todo/complete/<%= todo._id %>">Complete</a>
+                <%}%>
+                
+                
+
+                <a id="delete-button" href="/todo/delete/<%= todo._id %>">Delete</a>
+            </div>
+        <%})%>
+    </div>
+</body>
+
+</html>
